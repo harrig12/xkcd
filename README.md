@@ -111,3 +111,5 @@ To create a simple
 ##### Example of Atlernative Bar Graph
 
 ![](xkcd-demo_files/figure-markdown_strict/alt_bar-1.png)
+
+_All source files in [test directory](test/xkcd-demo.Rmd)
