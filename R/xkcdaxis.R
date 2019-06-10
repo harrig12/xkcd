@@ -77,8 +77,9 @@ createdefaultmappinganddata <- function(mapping, data, mandatoryarguments =c("x"
     nm <- names(mapping)
     positionswithoutname <- (1:length(nm))[nm==""]
     failsthisarguments <- mandatoryarguments[ !(mandatoryarguments %in% nm) ]
-    if(length(failsthisarguments) != length(positionswithoutname))
+    if(length(failsthisarguments) != length(positionswithoutname)) {
         stop(paste("Argumenst of aes are ", paste(mandatoryarguments, collapse=", "),".",sep=""))
+    }
     names(mapping)[positionswithoutname] <- failsthisarguments
     ## New names
     namesmapping <- names(mapping)
