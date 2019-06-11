@@ -19,7 +19,7 @@ Install
 
     install.packages("xkcd")
     library(extrafont)
-    download.file("http://simonsoftware.se/other/xkcd.ttf", 
+    download.file("http://simonsoftware.se/other/xkcd.ttf",
                   dest="xkcd.ttf", mode="wb")
     system("mkdir ~/.fonts")
     system("cp xkcd.ttf  ~/.fonts")
@@ -28,9 +28,9 @@ Install
     fonttable()
     if(.Platform$OS.type != "unix") {
       ## Register fonts for Windows bitmap output
-      loadfonts(device="win") 
+      loadfonts(device="win")
     } else {
-      loadfonts() 
+      loadfonts()
     }
 
 Then for every R script needing xkcd styling use **include** with:
@@ -51,7 +51,7 @@ To create a simple
     xrange <- range(mtcars$mpg)
     yrange <- range(mtcars$wt)
     set.seed(123) # for reproducibility
-    p <- ggplot() + geom_point(aes(mpg, wt), data=mtcars) + 
+    p <- ggplot() + geom_point(aes(mpg, wt), data=mtcars) +
           xkcdaxis(xrange,yrange)
     p
 
@@ -65,7 +65,7 @@ To create a simple
                    anglerightradius, angleleftradius,
                    anglerightleg, angleleftleg, angleofneck,
                    linetype=city)
-     
+
     dataman <- data.frame(x= c(15,30), y=c(3, 4),
                           scale = c(0.3,0.51) ,
                           ratioxy = ratioxy,
@@ -78,9 +78,9 @@ To create a simple
                           angleleftleg = 3*pi/2  + pi / 12 ,
                           angleofneck = runif(1, 3*pi/2-pi/10, 3*pi/2+pi/10),
                           city=c("Liliput","Brobdingnag"))
-     
-    p <- ggplot() + geom_point(aes(mpg, wt, colour=as.character(vs)), data=mtcars) + 
-      xkcdaxis(xrange,yrange) + 
+
+    p <- ggplot() + geom_point(aes(mpg, wt, colour=as.character(vs)), data=mtcars) +
+      xkcdaxis(xrange,yrange) +
       xkcdman(mapping, dataman)
     p
 
@@ -112,4 +112,4 @@ To create a simple
 
 ![](xkcd-demo_files/figure-markdown_strict/alt_bar-1.png)
 
-_All source files in [test directory](test/xkcd-demo.Rmd)
+_All source files in [test directory](test/xkcd-demo.Rmd)_
