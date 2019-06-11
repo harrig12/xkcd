@@ -20,7 +20,7 @@
 ##' @export
 ##' @examples
 ##' \dontrun{
-##' xrange <- range(mtcars$mpg)
+##' xrange <- range(mtcars$mpg)  d
 ##' yrange <- range(mtcars$wt)
 ##' p <- ggplot() +
 ##'      geom_point(aes(mpg, wt), data=mtcars) +
@@ -28,8 +28,10 @@
 ##' p
 ##' }
 xkcdaxis <- function(xrange, yrange, ...) {
-    if( is.null(xrange) | is.null(yrange) )
+    if ( is.null(xrange) | is.null(yrange) )
         stop("Arguments are: xrange, yrange")
+    
+    
     xjitteramount <- diff(xrange)/50
     yjitteramount <- diff(yrange)/50
     ## This cause R CMD check to give the note
