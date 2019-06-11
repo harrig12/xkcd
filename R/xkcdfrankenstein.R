@@ -17,7 +17,8 @@
 ##' @import shinydashbord
 ##' @import shinyjs
 ##' @import tidyverse
-##' @import string
+##' @import stringr
+##' @import MASS
 ##' @export
 ##' \dontrun{
 ##' xrange <- range(mtcars$mpg)
@@ -33,6 +34,7 @@ library(shinydashboard)
 library(shinyjs)
 library(tidyverse)
 library(stringr)
+library(MASS)
 
 frankenstein <- function(graph, xrange, yrange, ...) {
   xjitteramount <- diff(xrange)/50
@@ -218,9 +220,6 @@ frankenstein <- function(graph, xrange, yrange, ...) {
     observeEvent(unlist(lapply(angles, function(i) {input[[i]]})), {
       if ( rv$set ) {
         lapply(angles, function(i) {
-          # print(i)
-          # print(rv$man[[i]])
-          # print(input[[i]])
           if (is.finite(input[[i]]) )
             rv$man[[i]] <- (input[[i]] * pi/180)
           else
@@ -234,8 +233,7 @@ frankenstein <- function(graph, xrange, yrange, ...) {
       handle_angle <- function(nm) {
         if (nm %in% angles) {
           float <- rv$man[[nm]] / pi
-          
-          rv$man[[nm]]
+          str_c("(", fractions(float), ")*pi")
         } else {
           rv$man[[nm]]
         }
