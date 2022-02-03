@@ -20,7 +20,7 @@
 ##' @export
 ##' @examples
 ##' \dontrun{
-##' xrange <- range(mtcars$mpg)
+##' xrange <- range(mtcars$mpg)  d
 ##' yrange <- range(mtcars$wt)
 ##' p <- ggplot() +
 ##'      geom_point(aes(mpg, wt), data=mtcars) +
@@ -28,8 +28,10 @@
 ##' p
 ##' }
 xkcdaxis <- function(xrange, yrange, ...) {
-    if( is.null(xrange) | is.null(yrange) )
+    if ( is.null(xrange) | is.null(yrange) )
         stop("Arguments are: xrange, yrange")
+    
+    
     xjitteramount <- diff(xrange)/50
     yjitteramount <- diff(yrange)/50
     ## This cause R CMD check to give the note
@@ -77,8 +79,9 @@ createdefaultmappinganddata <- function(mapping, data, mandatoryarguments =c("x"
     nm <- names(mapping)
     positionswithoutname <- (1:length(nm))[nm==""]
     failsthisarguments <- mandatoryarguments[ !(mandatoryarguments %in% nm) ]
-    if(length(failsthisarguments) != length(positionswithoutname))
+    if(length(failsthisarguments) != length(positionswithoutname)) {
         stop(paste("Argumenst of aes are ", paste(mandatoryarguments, collapse=", "),".",sep=""))
+    }
     names(mapping)[positionswithoutname] <- failsthisarguments
     ## New names
     namesmapping <- names(mapping)
