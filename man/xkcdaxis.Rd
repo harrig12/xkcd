@@ -24,7 +24,7 @@ It plots the axis of the graph.
 }
 \examples{
 \dontrun{
-xrange <- range(mtcars$mpg)
+xrange <- range(mtcars$mpg)  d
 yrange <- range(mtcars$wt)
 p <- ggplot() +
      geom_point(aes(mpg, wt), data=mtcars) +

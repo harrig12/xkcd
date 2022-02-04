@@ -22,7 +22,7 @@ It draws fuzzy rectangles.
 \details{
 This function draws fuzzy rectangles.
 
-It plots rectangles. The following aesthetics are required:
+  It plots rectangles. The following aesthetics are required:
 \enumerate{
   \item xmin
   \item ymin

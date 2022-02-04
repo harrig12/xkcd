@@ -13,12 +13,9 @@
 ##' @param yrange xkcdman needs a yrange
 ##' @param ... Other arguments
 ##' @return Launching shiny app
-##' @import shiny
-##' @import shinydashbord
-##' @import shinyjs
-##' @import tidyverse
-##' @import stringr
-##' @import MASS
+##' @import stringr 
+##' @importFrom shinyjs useShinyjs show hide 
+##' @import shiny 
 ##' @export
 ##' \dontrun{
 ##' xrange <- range(mtcars$mpg)
@@ -54,7 +51,7 @@ frankenstein <- function(graph, xrange, yrange, ...) {
   angles <- grep("^angle.*$", x=names(dataman), value = TRUE)
   
   ui <- fluidPage(
-    useShinyjs(),
+    shinyjs::useShinyjs(),
     fluidRow(
       column(12,
         plotOutput("plot1",
@@ -226,7 +223,7 @@ frankenstein <- function(graph, xrange, yrange, ...) {
       handle_angle <- function(nm) {
         if (nm %in% angles) {
           float <- rv$man[[nm]] / pi
-          str_c("(", fractions(float), ")*pi")
+          stringr::str_c("(", MASS::fractions(float), ")*pi")
         } else {
           rv$man[[nm]]
         }
@@ -236,15 +233,15 @@ frankenstein <- function(graph, xrange, yrange, ...) {
         mapcode <- c("<pre>mapping <- aes(")
         datacode <- c("dataman <- data.frame(")
         for (nm in names(rv$man)) {
-          datacode <- c(datacode, str_c("&nbsp;&nbsp;", nm, "=", handle_angle(nm)))
-          mapcode <- c(mapcode, str_c("&nbsp;&nbsp;", nm))
+          datacode <- c(datacode, stringr::str_c("&nbsp;&nbsp;", nm, "=", handle_angle(nm)))
+          mapcode <- c(mapcode, stringr::str_c("&nbsp;&nbsp;", nm))
         }
         mapcode <- c(mapcode, ")<br />")
         datacode <- c(datacode, ")<br />")
         exe <- c("[GRAPH] + xkcdman(mapping, dataman")
         
         
-        HTML(str_c(c(mapcode, datacode, exe), collapse="<br />"))
+        HTML(stringr::str_c(c(mapcode, datacode, exe), collapse="<br />"))
       })
     })
     

@@ -26,7 +26,7 @@ It draws a handwritten line.
 \details{
 This function draws handwritten lines or circles.
 
-It draws a segment or a circunference in an XKCD style.
+ It draws a segment or a circunference in an XKCD style.
 
 If it is a segment, the following aesthetics are required:
  \enumerate{
@@ -36,14 +36,14 @@ If it is a segment, the following aesthetics are required:
    \item yend: y position of the point to.
  }
 
-If it is a circunference, the following aesthetics are required:
+   If it is a circunference, the following aesthetics are required:
  \enumerate{
    \item x: x position of the center.
    \item y: y position of the center.
    \item diameter: diameter of the circunference.
  }
 
-Additionally, you can use the aesthetics of \code{\link[ggplot2]{geom_path}}.
+  Additionally, you can use the aesthetics of \code{\link[ggplot2]{geom_path}}.
 }
 \examples{
 data <- data.frame(x1=c(1,2), y1=c(10,20), xend=c(2.5,0.5),

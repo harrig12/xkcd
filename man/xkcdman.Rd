@@ -42,6 +42,7 @@ The following aesthetics are required:
 }
 Angles are in radians.
 
+ 
 Additionally, you can use the aesthetics of \code{\link[ggplot2]{geom_path}},
 and \code{xkcdline}.
 }
