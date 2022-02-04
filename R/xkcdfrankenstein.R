@@ -29,21 +29,14 @@
 ##' frankenstein(p, xrange, yrange) # launches app
 ##' }
 
-library(shiny)
-library(shinydashboard)
-library(shinyjs)
-library(tidyverse)
-library(stringr)
-library(MASS)
-
 frankenstein <- function(graph, xrange, yrange, ...) {
   xjitteramount <- diff(xrange)/50
   yjitteramount <- diff(yrange)/50
   ratioxy <- diff(xrange)/diff(yrange)
-  mapping <- aes(x, y, scale, ratioxy, angleofspine,
-                 anglerighthumerus, anglelefthumerus,
-                 anglerightradius, angleleftradius,
-                 anglerightleg, angleleftleg, angleofneck)
+  mapping <- aes_string("x", "y", "scale", "ratioxy", "angleofspine",
+                 "anglerighthumerus", "anglelefthumerus",
+                 "anglerightradius", "angleleftradius",
+                 "anglerightleg", "angleleftleg", "angleofneck")
   
   # default dataframe
   dataman <- data.frame(x= 30, y= 4.5,
@@ -79,7 +72,7 @@ frankenstein <- function(graph, xrange, yrange, ...) {
     ),
     fluidRow(
       column(2,
-        actionButton(inputId = "create", label="Create Person 1")
+        actionButton(inputId = "create", label="Create Person")
       ),
       column(6,
         verbatimTextOutput("warning")
@@ -281,9 +274,3 @@ frankenstein <- function(graph, xrange, yrange, ...) {
   shinyApp(ui, server)
 }
 
-xrange <- range(mtcars$mpg)
-yrange <- range(mtcars$wt)
-set.seed(123) # for reproducibility
-p <- ggplot() + geom_point(aes(mpg, wt), data=mtcars) + 
-  xkcdaxis(xrange,yrange)
-frankenstein(p, xrange, yrange)
