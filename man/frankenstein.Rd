@@ -23,3 +23,13 @@ Launching shiny app
 Let's face it, plotting the xkcdman is hard, so I created 
 a shiny app called Frankenstein to help with this process.
 }
+\examples{
+\dontrun{
+xrange <- range(mtcars$mpg)
+yrange <- range(mtcars$wt)
+p <- ggplot() +
+     geom_point(aes(mpg, wt), data=mtcars) +
+     xkcdaxis(xrange, yrange)
+frankenstein(p, xrange, yrange) # launches app
+}
+}

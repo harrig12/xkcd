@@ -17,6 +17,7 @@
 ##' @importFrom shinyjs useShinyjs show hide 
 ##' @import shiny 
 ##' @export
+##' @examples
 ##' \dontrun{
 ##' xrange <- range(mtcars$mpg)
 ##' yrange <- range(mtcars$wt)
